@@ -1,0 +1,6 @@
+
+
+GET http://localhost:5273/games
+Accept: application/json
+
+###
