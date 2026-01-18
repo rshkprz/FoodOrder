@@ -20,12 +20,13 @@
 
   <ItemGroup>
     <Folder Include="Data/" />
-    <Folder Include="Features/" />
     <Folder Include="Features/Auth/" />
     <Folder Include="Features/Auth/Constants/" />
     <Folder Include="Features/Auth/Jwt/" />
     <Folder Include="Features/Auth/Login/" />
     <Folder Include="Features/Auth/Register/" />
+    <Folder Include="Features/Categories/GetCategories/" />
+  
     <Folder Include="Models/" />
   </ItemGroup>
 
