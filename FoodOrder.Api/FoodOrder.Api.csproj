@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>2e4f3c58-e343-4bae-826e-92d39956d148</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,11 +15,18 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="data/" />
-    <Folder Include="models/" />
+    <Folder Include="Data/" />
+    <Folder Include="Features/" />
+    <Folder Include="Features/Auth/" />
+    <Folder Include="Features/Auth/Constants/" />
+    <Folder Include="Features/Auth/Jwt/" />
+    <Folder Include="Features/Auth/Login/" />
+    <Folder Include="Features/Auth/Register/" />
+    <Folder Include="Models/" />
   </ItemGroup>
 
   

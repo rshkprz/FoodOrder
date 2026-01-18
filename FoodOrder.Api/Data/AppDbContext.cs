@@ -1,9 +1,9 @@
 using System;
-using FoodOrder.Api.models;
+using FoodOrder.Api.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace FoodOrder.Api.data;
+namespace FoodOrder.Api.Data;
 
 public class AppDbContext:IdentityDbContext<ApplicationUser>
 {
