@@ -25,6 +25,7 @@ public static class LoginEndpoint
             var roles = await userManager.GetRolesAsync(user);
 
             Console.WriteLine($"User found → Id: '{user.Id}', Email: '{user.Email}', Username: '{user.UserName}'");
+            Console.WriteLine(string.Join(", ", roles));
 
             if (string.IsNullOrEmpty(user.Id))
             {

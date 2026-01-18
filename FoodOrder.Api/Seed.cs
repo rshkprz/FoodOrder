@@ -111,7 +111,6 @@ public static class Seed
             UserName = adminEmail,
             Email = adminEmail,
             EmailConfirmed = true,
-            // If you have other required fields, set them here
         };
 
         var createResult = await userManager.CreateAsync(newAdmin, adminPassword);
@@ -124,8 +123,7 @@ public static class Seed
             return;
         }
 
-        // ────────────── VERY IMPORTANT ──────────────
-        // Reload user with populated Id
+        
         admin = await userManager.FindByEmailAsync(adminEmail);
 
         if (admin == null || string.IsNullOrEmpty(admin.Id))

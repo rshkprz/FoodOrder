@@ -2,7 +2,9 @@ using System.Text;
 using FoodOrder.Api;
 using FoodOrder.Api.Data;
 using FoodOrder.Api.Features.Auth;
+using FoodOrder.Api.Features.Auth.Constants;
 using FoodOrder.Api.Features.Auth.Jwt;
+using FoodOrder.Api.Features.Categories;
 using FoodOrder.Api.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -15,10 +17,10 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<AppDbContext>(options=>options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 
-builder.Services
-    .AddIdentity<ApplicationUser, IdentityRole>()
+builder.Services.AddIdentityCore<ApplicationUser>()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
+    .AddSignInManager();
 
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
 
@@ -36,7 +38,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy =>
+        policy.RequireRole(Roles.Admin)
+    );
+});
 
 var app = builder.Build();
 
@@ -69,6 +76,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapAuthEndpoints();
+app.MapCategoryEndpoints();
 
 
 app.Run();
